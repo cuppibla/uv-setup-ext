@@ -1,0 +1,8 @@
+{
+  "name": "uv-setup",
+  "version": "1.0.0",
+  "description": "Sets up uv and ADK dependencies so that adk web and other ADK commands work correctly. Fixes 'command not found' errors.",
+  "skills": [
+    "./skills/uv-setup"
+  ]
+}
