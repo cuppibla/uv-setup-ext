@@ -20,7 +20,21 @@ and `uv run <command>` always finds the right tool, no matter where you are.
 ### Install
 
 ```bash
-gemini extensions install https://github.com/cuppibla/uv-setup-ext
+gemini extensions install https://github.com/cuppibla/uv-setup-ext --auto-update
+```
+
+### Update
+
+To update manually (if installed without `--auto-update`):
+
+```bash
+gemini extensions update https://github.com/cuppibla/uv-setup-ext
+```
+
+### Uninstall
+
+```bash
+gemini extensions uninstall https://github.com/cuppibla/uv-setup-ext
 ```
 
 ### Usage
@@ -57,9 +71,11 @@ Then start Claude Code in any project folder and invoke the skill:
 
 Describe what you need and Claude will run the right commands for you.
 
-To update the skill later, re-run the same curl command.
+### Update
 
-To remove the skill:
+To pick up the latest version, re-run the same curl command above.
+
+### Remove
 
 ```bash
 rm ~/.claude/commands/uv-setup.md
