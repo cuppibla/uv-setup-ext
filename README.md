@@ -1,17 +1,17 @@
 # uv-setup-ext
 
 A Gemini CLI extension that sets up [uv](https://docs.astral.sh/uv/) for
-your ADK project — so that `adk web` and all ADK commands work correctly
+any Python project — so that Python commands and tools always work correctly
 without "command not found" errors.
 
 ## The problem this solves
 
-When you install `google-adk` with pip inside a virtual environment, the
-`adk` command is only available inside that environment. If you run
-`adk web` from a plain terminal it says "command not found".
+When you install a Python package with pip inside a virtual environment, its
+CLI commands are only available inside that environment. Running them from a
+plain terminal gives "command not found".
 
 `uv` solves this cleanly: it manages your virtual environment automatically
-and `uv run adk web` always finds the right `adk`, no matter where you are.
+and `uv run <command>` always finds the right tool, no matter where you are.
 
 ## Install
 
@@ -25,26 +25,27 @@ Start Gemini CLI in your project folder and just describe the problem:
 
 ```
 gemini> adk web says command not found, help me set up uv
-gemini> I want to set up uv for my ADK project
-gemini> help me install google-adk with uv
+gemini> I want to add requests to my project with uv
+gemini> help me install httpx using uv
+gemini> set up uv for my Python project
 ```
 
 The skill will guide you through every step and run the right commands for you.
 
 ## What the skill does
 
-- Checks whether `uv` is already installed
-- Installs `uv` if missing (one command, no admin rights needed)
-- Initialises a `uv` project in your agent folder (`pyproject.toml`)
-- Adds `google-adk` as a dependency with `uv add`
-- Replaces bare `adk` commands with `uv run adk` so they always work
-- Verifies the setup is correct before handing off to you
+1. Checks whether `uv` is already installed, installs it if missing
+2. Checks whether the project already has a `pyproject.toml`
+3. Runs `uv init --no-package` if the project is not yet initialised
+4. Adds the required package with `uv add <package>`
+5. Verifies the setup is correct before handing off to you
 
 ## After setup, always use
 
 ```bash
-uv run adk web          # instead of: adk web
-uv run adk run <folder> # instead of: adk run <folder>
+uv run <command>          # instead of: <command>
+uv run python script.py   # instead of: python script.py
+uv add <package>          # to add new dependencies
 ```
 
 ## Requirements
